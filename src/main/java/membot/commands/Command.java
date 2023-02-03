@@ -74,13 +74,12 @@ public abstract class Command {
             case EVENT:
                 return new EventCommand(input, ui);
             default:
-                assert false : "Unknown command";
+                // Should not reach here
+                throw new InvalidCommandException(String.format("%s is not a valid command!", inputArr[0]));
             }
         } catch (IllegalArgumentException e) {
             throw new InvalidCommandException(String.format("%s is not a valid command!", inputArr[0]));
         }
-
-        throw new InvalidCommandException(String.format("%s is not a valid command!", inputArr[0]));
     }
 
     /**
